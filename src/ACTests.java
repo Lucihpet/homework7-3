@@ -1,4 +1,7 @@
 import org.junit.Test;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ACTests {
@@ -20,9 +23,13 @@ public class ACTests {
         Autocomplete ac = new Autocomplete (str);
 
         for (int i = 0; i < expected.length; i++) {
-            List<String> actual = ac.autocomplete(searchTerms[i]);
+            List<String> expectedList = new ArrayList<>();
 
-            assertTrue()
+            for (int j = 0; j < expected[i].length; j++) {
+                expectedList.add(expected[i][j]);
+            }
+
+            assertEquals(expectedList, ac.autocomplete(searchTerms[i]));
         }
 
     }
